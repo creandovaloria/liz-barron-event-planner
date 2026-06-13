@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liz Barrón Event Planner | San Juan del Río, Querétaro</title>
+  <meta name="description" content="Diseño, coordinación y producción de eventos sociales, deportivos, culturales y corporativos en San Juan del Río, Querétaro. Planeamos cada detalle para que tú vivas cada momento.">
+  <meta property="og:title" content="Liz Barrón Event Planner">
+  <meta property="og:description" content="Planeamos cada detalle para que tú vivas cada momento.">
+  <meta property="og:url" content="https://lizbethbarron.com">
+  <meta name="theme-color" content="#2C1A0E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================
+       CSS CUSTOM PROPERTIES
+    ========================================== */
+    :root {
+      --rosa-marfil: #F4E7E3;
+      --rose-gold: #C99884;
+      --cafe-rosado: #9A7367;
+      --marfil-claro: #FAF8F7;
+      --gris-taupe: #D7D0CC;
+      --oscuro: #2C1A0E;
+      --blanco: #FFFFFF;
+      --max-width: 1100px;
+      --transition: 0.3s ease;
+    }
+
+    /* ==========================================
+       RESET & BASE
+    ========================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      color: var(--oscuro);
+      background-color: var(--marfil-claro);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ==========================================
+       ANIMATION BASE CLASSES
+    ========================================== */
+    .anim {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .anim.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .anim-delay-1 { transition-delay: 0.1s; }
+    .anim-delay-2 { transition-delay: 0.2s; }
+    .anim-delay-3 { transition-delay: 0.3s; }
+    .anim-delay-4 { transition-delay: 0.4s; }
+    .anim-delay-5 { transition-delay: 0.5s; }
+
+    /* ==========================================
+       TYPOGRAPHY UTILITIES
+    ========================================== */
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-gold);
+      display: block;
+    }
+
+    /* ==========================================
+       SECTION WRAPPER
+    ========================================== */
+    .section-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .section-line {
+      width: 100%;
+      height: 0.5px;
+      background-color: var(--rose-gold);
+      opacity: 0.25;
+    }
+
+    /* ==========================================
+       NAVBAR
+    ========================================== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 22px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #navbar.scrolled {
+      background-color: var(--blanco);
+      box-shadow: 0 1px 24px rgba(44,26,14,0.07);
+      padding: 14px 40px;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--marfil-claro);
+      position: relative;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    #navbar.scrolled .nav-links a {
+      color: var(--cafe-rosado);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--rose-gold);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--rose-gold);
+      border: 1px solid var(--rose-gold);
+      padding: 10px 22px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--rose-gold);
+      color: var(--blanco);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 201;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background-color: var(--marfil-claro);
+      transition: transform 0.4s ease, opacity 0.4s ease, background-color var(--transition);
+    }
+
+    #navbar.scrolled .hamburger span { background-color: var(--oscuro); }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background-color: var(--marfil-claro) !important; }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background-color: var(--marfil-claro) !important; }
+
+    /* Mobile overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: var(--oscuro);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: var(--marfil-claro);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover { color: var(--rose-gold); }
+
+    .mobile-menu .nav-cta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    /* ==========================================
+       HERO
+    ========================================== */
+    #inicio {
+      min-height: 100vh;
+      background-color: var(--oscuro);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #inicio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='white' fill-opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 640px;
+      padding: 130px 24px 110px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose-gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(34px, 5.5vw, 56px);
+      color: var(--marfil-claro);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background-color: var(--rose-gold);
+      margin: 28px auto;
+    }
+
+    .hero-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: rgba(250,248,247,0.65);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--rose-gold);
+      color: var(--blanco);
+      padding: 14px 36px;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: background-color var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background-color: #b07563; }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--marfil-claro);
+      padding: 14px 36px;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid rgba(250,248,247,0.4);
+      transition: border-color var(--transition);
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: rgba(250,248,247,1); }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(201,152,132,0.5);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(201,152,132,0.6), transparent);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDrop {
+      0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.5; }
+      50% { transform: scaleY(1.2) translateY(4px); opacity: 1; }
+    }
+
+    /* ==========================================
+       SERVICIOS
+    ========================================== */
+    #servicios {
+      background-color: var(--marfil-claro);
+      padding: 110px 0 80px;
+    }
+
+    .servicios-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .servicios-header-left .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--oscuro);
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+      line-height: 1.05;
+    }
+
+    .servicios-header-right p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--cafe-rosado);
+      line-height: 1.85;
+      padding-bottom: 6px;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background-color: var(--gris-taupe);
+    }
+
+    .servicio-card {
+      background-color: var(--blanco);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      border: 0.5px solid var(--gris-taupe);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .servicio-card:hover {
+      border-color: var(--rose-gold);
+      box-shadow: 0 8px 32px rgba(201,152,132,0.12);
+    }
+
+    .servicio-num {
+      position: absolute;
+      top: 12px;
+      right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 64px;
+      color: var(--rosa-marfil);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .servicio-nombre {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--oscuro);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .servicio-line {
+      width: 32px;
+      height: 1px;
+      background-color: var(--rose-gold);
+      margin-bottom: 20px;
+    }
+
+    .servicio-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--cafe-rosado);
+      line-height: 1.85;
+    }
+
+    .servicios-cierre {
+      text-align: center;
+      margin-top: 72px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--rose-gold);
+    }
+
+    /* ==========================================
+       PORTAFOLIO
+    ========================================== */
+    #portafolio {
+      background-color: var(--rosa-marfil);
+      padding: 110px 0;
+    }
+
+    .portafolio-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .portafolio-header .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--oscuro);
+      letter-spacing: -0.02em;
+      margin: 14px 0 16px;
+      line-height: 1.1;
+    }
+
+    .portafolio-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--cafe-rosado);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .pill {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1px solid var(--gris-taupe);
+      color: var(--cafe-rosado);
+      cursor: pointer;
+      background: transparent;
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .pill:hover, .pill.active {
+      background-color: var(--rose-gold);
+      color: var(--blanco);
+      border-color: var(--rose-gold);
+    }
+
+    /* Masonry */
+    .masonry-grid {
+      columns: 3;
+      column-gap: 16px;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .masonry-item.hidden { display: none; }
+
+    .masonry-placeholder {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gris-taupe) 0%, rgba(201,152,132,0.18) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .masonry-item:nth-child(1) .masonry-placeholder { aspect-ratio: 4/3; }
+    .masonry-item:nth-child(2) .masonry-placeholder { aspect-ratio: 3/4; }
+    .masonry-item:nth-child(3) .masonry-placeholder { aspect-ratio: 3/4; }
+    .masonry-item:nth-child(4) .masonry-placeholder { aspect-ratio: 4/3; }
+    .masonry-item:nth-child(5) .masonry-placeholder { aspect-ratio: 4/3; }
+    .masonry-item:nth-child(6) .masonry-placeholder { aspect-ratio: 1/1; }
+
+    .masonry-placeholder span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--cafe-rosado);
+    }
+
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(44,26,14,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color var(--transition);
+    }
+
+    .masonry-overlay span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: transparent;
+      transition: color var(--transition);
+    }
+
+    .masonry-item:hover .masonry-overlay { background-color: rgba(44,26,14,0.5); }
+    .masonry-item:hover .masonry-overlay span { color: var(--blanco); }
+
+    /* ==========================================
+       SOBRE LIZ
+    ========================================== */
+    #nosotros {
+      background-color: var(--blanco);
+      padding: 110px 0;
+    }
+
+    .nosotros-grid {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .nosotros-foto-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nosotros-foto-deco {
+      position: absolute;
+      width: 364px;
+      height: 364px;
+    }
+
+    .nosotros-foto-circle {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #EABFB0, var(--rose-gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Placeholder — reemplazar con <img> real cuando haya foto */
+    .nosotros-foto-circle span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--marfil-claro);
+    }
+
+    .nosotros-nombre {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--oscuro);
+      letter-spacing: -0.02em;
+      margin: 14px 0 6px;
+      line-height: 1.1;
+    }
+
+    .nosotros-cargo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--cafe-rosado);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nosotros-line {
+      width: 48px;
+      height: 1px;
+      background-color: var(--rose-gold);
+      margin: 24px 0;
+    }
+
+    .nosotros-bio p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--cafe-rosado);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .nosotros-metodo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--rose-gold);
+      margin: 20px 0 36px;
+    }
+
+    .nosotros-metricas {
+      display: flex;
+      gap: 40px;
+    }
+
+    .metrica-num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--oscuro);
+      line-height: 1;
+    }
+
+    .metrica-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      color: var(--cafe-rosado);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ==========================================
+       TESTIMONIOS
+    ========================================== */
+    #testimonios {
+      background-color: var(--oscuro);
+      padding: 110px 0;
+    }
+
+    .testimonios-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .testimonios-header .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--marfil-claro);
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonio-card {
+      background-color: rgba(250,248,247,0.05);
+      border: 0.5px solid rgba(201,152,132,0.3);
+      border-radius: 2px;
+      padding: 40px;
+    }
+
+    .testimonio-comillas {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 80px;
+      color: rgba(201,152,132,0.2);
+      line-height: 0.8;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .testimonio-texto {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--marfil-claro);
+      line-height: 1.9;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .testimonio-estrellas {
+      color: var(--rose-gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .testimonio-sep {
+      width: 100%;
+      height: 0.5px;
+      background-color: rgba(201,152,132,0.3);
+      margin-bottom: 16px;
+    }
+
+    .testimonio-nombre {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--marfil-claro);
+      margin-bottom: 4px;
+    }
+
+    .testimonio-tipo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--rose-gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================
+       CONTACTO
+    ========================================== */
+    #contacto {
+      background-color: var(--marfil-claro);
+      padding: 110px 0;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contacto-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--oscuro);
+      letter-spacing: -0.02em;
+      margin: 14px 0 20px;
+      line-height: 1.15;
+    }
+
+    .contacto-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--cafe-rosado);
+      line-height: 1.85;
+      margin-bottom: 40px;
+    }
+
+    .contacto-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .contacto-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--rose-gold);
+    }
+
+    .contacto-item-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--cafe-rosado);
+      line-height: 1.5;
+    }
+
+    .redes-sociales {
+      display: flex;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .red-social {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--gris-taupe);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+      color: var(--cafe-rosado);
+    }
+
+    .red-social:hover {
+      background-color: var(--rose-gold);
+      border-color: var(--rose-gold);
+      color: var(--blanco);
+    }
+
+    .red-social svg { width: 16px; height: 16px; }
+
+    /* Form */
+    .contacto-form {
+      background-color: var(--blanco);
+      padding: 48px;
+      border: 0.5px solid var(--gris-taupe);
+      border-radius: 2px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid var(--gris-taupe);
+      background: transparent;
+      padding: 12px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--oscuro);
+      outline: none;
+      transition: border-color var(--transition);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group select { cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--rose-gold);
+    }
+
+    .form-label {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: var(--gris-taupe);
+      pointer-events: none;
+      transition: top 0.25s ease, font-size 0.25s ease, color 0.25s ease;
+    }
+
+    .form-group.focused .form-label,
+    .form-group.filled .form-label {
+      top: -14px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--rose-gold);
+      text-transform: uppercase;
+    }
+
+    /* Select always has label up */
+    .form-group.select-group .form-label {
+      top: -14px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--rose-gold);
+      text-transform: uppercase;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--rose-gold);
+      color: var(--blanco);
+      border: none;
+      padding: 16px;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .btn-submit:hover { background-color: #b07563; }
+
+    /* Form success overlay */
+    .form-success {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(44,26,14,0.72);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .form-success.show { display: flex; }
+
+    .form-success-box {
+      background-color: var(--blanco);
+      padding: 60px 48px;
+      border-radius: 2px;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      animation: fadeInUp 0.45s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--rose-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: var(--rose-gold);
+    }
+
+    .form-success-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--oscuro);
+      margin-bottom: 12px;
+    }
+
+    .form-success-box p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--cafe-rosado);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .form-success-close {
+      background-color: var(--rose-gold);
+      color: var(--blanco);
+      border: none;
+      padding: 12px 32px;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .form-success-close:hover { background-color: #b07563; }
+
+    /* ==========================================
+       FOOTER
+    ========================================== */
+    #footer {
+      background-color: var(--oscuro);
+      padding: 64px 0 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo img { height: 48px; }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--rose-gold);
+      margin-bottom: 36px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: rgba(250,248,247,0.5);
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--marfil-claro); }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    /* Footer red-social inherits styles from contacto */
+    .footer-socials .red-social {
+      border-color: rgba(201,152,132,0.35);
+      color: rgba(201,152,132,0.7);
+    }
+
+    .footer-socials .red-social:hover {
+      background-color: var(--rose-gold);
+      border-color: var(--rose-gold);
+      color: var(--blanco);
+    }
+
+    .footer-sep {
+      max-width: var(--max-width);
+      height: 0.5px;
+      background-color: rgba(201,152,132,0.2);
+      margin: 0 auto 24px;
+    }
+
+    .footer-copy {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      color: rgba(250,248,247,0.4);
+    }
+
+    /* ==========================================
+       WHATSAPP FLOTANTE
+    ========================================== */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      cursor: pointer;
+      animation: waPulse 2s ease-in-out infinite;
+      text-decoration: none;
+    }
+
+    @keyframes waPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .whatsapp-btn svg { width: 28px; height: 28px; fill: white; }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 68px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--oscuro);
+      color: var(--blanco);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .whatsapp-tooltip::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 5px solid transparent;
+      border-left-color: var(--oscuro);
+    }
+
+    .whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+
+    /* ==========================================
+       RESPONSIVE — TABLET
+    ========================================== */
+    @media (max-width: 900px) {
+      #navbar { padding: 16px 24px; }
+      #navbar.scrolled { padding: 12px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .servicios-header { grid-template-columns: 1fr; gap: 20px; }
+      .servicios-header-right { padding-top: 0; }
+      .servicios-grid { grid-template-columns: 1fr; }
+
+      .nosotros-grid { grid-template-columns: 1fr; gap: 52px; text-align: center; }
+      .nosotros-line { margin-left: auto; margin-right: auto; }
+      .nosotros-metricas { justify-content: center; }
+
+      .testimonios-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .masonry-grid { columns: 2; }
+    }
+
+    /* ==========================================
+       RESPONSIVE — MOBILE
+    ========================================== */
+    @media (max-width: 600px) {
+      .section-container { padding: 0 20px; }
+
+      #servicios, #portafolio, #nosotros, #testimonios, #contacto {
+        padding: 80px 0;
+      }
+
+      .servicios-header .section-heading,
+      .portafolio-header .section-heading,
+      .testimonios-header .section-heading { font-size: 36px; }
+
+      .contacto-heading { font-size: 32px; }
+
+      .nosotros-foto-circle { width: 240px; height: 240px; }
+      .nosotros-foto-deco { width: 276px; height: 276px; }
+      .nosotros-nombre { font-size: 28px; }
+      .nosotros-metricas { gap: 28px; flex-wrap: wrap; justify-content: center; }
+
+      .masonry-grid { columns: 1; }
+
+      .contacto-form { padding: 32px 24px; }
+
+      .testimonios-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 12px;
+      }
+
+      .testimonio-card {
+        min-width: 82vw;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+
+      .hero-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR
+  ========================================== -->
+  <nav id="navbar" role="navigation" aria-label="Navegación principal">
+    <a class="nav-logo" href="#inicio" aria-label="Inicio">
+      <img src="https://res.cloudinary.com/dldccvnyj/image/upload/v1781338286/logo_2_liz_barron_-_fondo_transparente_fd7s5k.png"
+           alt="Liz Barrón Event Planner" height="48">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="#contacto">Cotiza tu evento</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#portafolio" class="mobile-link">Portafolio</a>
+    <a href="#nosotros" class="mobile-link">Nosotros</a>
+    <a href="#testimonios" class="mobile-link">Testimonios</a>
+    <a href="#contacto" class="mobile-link">Contacto</a>
+    <a href="#contacto" class="nav-cta mobile-link">Cotiza tu evento</a>
+  </div>
+
+  <!-- ==========================================
+       HERO
+  ========================================== -->
+  <section id="inicio" aria-label="Hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Event Planner · San Juan del Río, Querétaro</p>
+      <h1 class="hero-headline">
+        Planeamos cada detalle<br>
+        para que tú vivas<br>
+        cada momento.
+      </h1>
+      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-subtitle">
+        Diseño, coordinación y producción de eventos sociales,
+        deportivos, culturales y corporativos.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn-primary">Cotiza tu evento</a>
+        <a href="#portafolio" class="btn-secondary">Ver portafolio</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SERVICIOS
+  ========================================== -->
+  <section id="servicios" aria-label="Servicios">
+    <div class="section-container">
+
+      <div class="servicios-header">
+        <div class="servicios-header-left anim">
+          <span class="eyebrow">Lo que hacemos</span>
+          <h2 class="section-heading">Servicios</h2>
+        </div>
+        <div class="servicios-header-right anim anim-delay-2">
+          <p>Cada evento es una historia única. Nos encargamos de cada detalle —
+            desde la conceptualización hasta el último minuto — para que tú
+            puedas vivir el momento completamente presente.</p>
+        </div>
+      </div>
+
+      <div class="servicios-grid">
+
+        <div class="servicio-card anim anim-delay-1">
+          <span class="servicio-num" aria-hidden="true">01</span>
+          <h3 class="servicio-nombre">Eventos Sociales</h3>
+          <div class="servicio-line" aria-hidden="true"></div>
+          <p class="servicio-desc">
+            <!-- Actualizar con descripción real -->
+            Quinceañeras, bodas, bautizos, aniversarios y celebraciones familiares.
+            Transformamos cada ocasión especial en un recuerdo que perdura, cuidando
+            cada detalle con elegancia y precisión.
+          </p>
+        </div>
+
+        <div class="servicio-card anim anim-delay-2">
+          <span class="servicio-num" aria-hidden="true">02</span>
+          <h3 class="servicio-nombre">Eventos Corporativos</h3>
+          <div class="servicio-line" aria-hidden="true"></div>
+          <p class="servicio-desc">
+            <!-- Actualizar con descripción real -->
+            Convenciones, lanzamientos de producto, team buildings y cenas de gala.
+            Diseñamos experiencias que reflejan la identidad de tu marca y superan
+            las expectativas de tus colaboradores y clientes.
+          </p>
+        </div>
+
+        <div class="servicio-card anim anim-delay-3">
+          <span class="servicio-num" aria-hidden="true">03</span>
+          <h3 class="servicio-nombre">Eventos Deportivos</h3>
+          <div class="servicio-line" aria-hidden="true"></div>
+          <p class="servicio-desc">
+            <!-- Actualizar con descripción real -->
+            Torneos, carreras, premiaciones y activaciones atléticas. Coordinamos
+            la logística completa para que cada competición fluya con precisión
+            y emoción, desde el arranque hasta el podio.
+          </p>
+        </div>
+
+        <div class="servicio-card anim anim-delay-4">
+          <span class="servicio-num" aria-hidden="true">04</span>
+          <h3 class="servicio-nombre">Eventos Culturales</h3>
+          <div class="servicio-line" aria-hidden="true"></div>
+          <p class="servicio-desc">
+            <!-- Actualizar con descripción real -->
+            Exposiciones, conciertos, festivales y eventos artísticos. Producimos
+            experiencias culturales que conectan a las personas con el arte, la música
+            y las tradiciones de nuestra comunidad.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="servicios-cierre anim">Diseñamos. Coordinamos. Resolvemos.</p>
+
+    </div>
+  </section>
+
+  <div class="section-line" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       PORTAFOLIO
+  ========================================== -->
+  <section id="portafolio" aria-label="Portafolio">
+    <div class="section-container">
+
+      <div class="portafolio-header anim">
+        <span class="eyebrow">Nuestro trabajo</span>
+        <h2 class="section-heading">Eventos que hablan por sí solos</h2>
+        <p>Cada imagen es un momento que alguien atesoró para siempre.</p>
+      </div>
+
+      <div class="filter-pills anim anim-delay-1" role="group" aria-label="Filtrar por categoría">
+        <button class="pill active" data-filter="todos">Todos</button>
+        <button class="pill" data-filter="sociales">Sociales</button>
+        <button class="pill" data-filter="corporativos">Corporativos</button>
+        <button class="pill" data-filter="deportivos">Deportivos</button>
+        <button class="pill" data-filter="culturales">Culturales</button>
+      </div>
+
+      <!-- Reemplazar .masonry-placeholder con <img src="URL_CLOUDINARY" alt="..."> cuando haya fotos -->
+      <div class="masonry-grid anim anim-delay-2">
+        <div class="masonry-item" data-category="sociales">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+        <div class="masonry-item" data-category="corporativos">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+        <div class="masonry-item" data-category="deportivos">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+        <div class="masonry-item" data-category="culturales">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+        <div class="masonry-item" data-category="sociales">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+        <div class="masonry-item" data-category="corporativos">
+          <div class="masonry-placeholder"><span>Foto próximamente</span></div>
+          <div class="masonry-overlay"><span>Ver más</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-line" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       SOBRE LIZ
+  ========================================== -->
+  <section id="nosotros" aria-label="Sobre Liz">
+    <div class="section-container">
+      <div class="nosotros-grid">
+
+        <div class="nosotros-foto-wrap anim">
+          <!-- Reemplazar el div.nosotros-foto-circle con <img> real cuando haya foto de Liz -->
+          <svg class="nosotros-foto-deco" viewBox="0 0 364 364" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="182" cy="182" r="177" stroke="#C99884" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 9"/>
+          </svg>
+          <div class="nosotros-foto-circle" role="img" aria-label="Foto de Liz Barrón — próximamente">
+            <span aria-hidden="true">LB</span>
+          </div>
+        </div>
+
+        <div class="nosotros-texto anim anim-delay-2">
+          <span class="eyebrow">Quién soy</span>
+          <h2 class="nosotros-nombre">Ana Lizbeth Barrón Quintanar</h2>
+          <p class="nosotros-cargo">Event Planner &amp; Event Producer</p>
+          <div class="nosotros-line" aria-hidden="true"></div>
+          <div class="nosotros-bio">
+            <p>Me dedico a transformar ideas en experiencias memorables — desde la primera llamada
+               hasta el último detalle del día del evento.</p>
+            <p>Mi trabajo no se trata solo de logística: se trata de que tú, como anfitrión,
+               puedas estar completamente presente, disfrutar tu evento y confiar en que todo
+               está bajo control. Eso es lo que me mueve.</p>
+          </div>
+          <p class="nosotros-metodo">Diseñamos. Coordinamos. Resolvemos.</p>
+          <div class="nosotros-metricas">
+            <div class="metrica">
+              <div class="metrica-num">100+</div><!-- Actualizar -->
+              <div class="metrica-label">Eventos</div>
+            </div>
+            <div class="metrica">
+              <div class="metrica-num">4</div>
+              <div class="metrica-label">Especialidades</div>
+            </div>
+            <div class="metrica">
+              <div class="metrica-num">1</div>
+              <div class="metrica-label">Objetivo: el tuyo</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-line" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       TESTIMONIOS
+  ========================================== -->
+  <!-- Reemplazar con testimonios reales -->
+  <section id="testimonios" aria-label="Testimonios">
+    <div class="section-container">
+
+      <div class="testimonios-header anim">
+        <span class="eyebrow" style="color: var(--rose-gold);">Lo que dicen</span>
+        <h2 class="section-heading">Quienes confiaron en nosotros</h2>
+      </div>
+
+      <div class="testimonios-grid">
+
+        <div class="testimonio-card anim anim-delay-1">
+          <span class="testimonio-comillas" aria-hidden="true">"</span>
+          <!-- Reemplazar con testimonio real -->
+          <p class="testimonio-texto">Liz transformó por completo nuestra visión. Cada detalle estaba
+            perfectamente cuidado y yo pude disfrutar mi fiesta sin preocuparme por absolutamente nada.
+            Fue una noche mágica que jamás olvidaré.</p>
+          <div class="testimonio-estrellas" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonio-sep" aria-hidden="true"></div>
+          <p class="testimonio-nombre">Sofía Ramírez</p><!-- Reemplazar -->
+          <p class="testimonio-tipo">Quinceañera</p><!-- Reemplazar -->
+        </div>
+
+        <div class="testimonio-card anim anim-delay-2">
+          <span class="testimonio-comillas" aria-hidden="true">"</span>
+          <!-- Reemplazar con testimonio real -->
+          <p class="testimonio-texto">Trabajar con Liz fue la mejor decisión para nuestro evento corporativo.
+            Profesionalismo total, creatividad desbordante y una ejecución impecable. Nuestros clientes
+            quedaron sorprendidos.</p>
+          <div class="testimonio-estrellas" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonio-sep" aria-hidden="true"></div>
+          <p class="testimonio-nombre">Carlos Mendoza</p><!-- Reemplazar -->
+          <p class="testimonio-tipo">Evento Corporativo</p><!-- Reemplazar -->
+        </div>
+
+        <div class="testimonio-card anim anim-delay-3">
+          <span class="testimonio-comillas" aria-hidden="true">"</span>
+          <!-- Reemplazar con testimonio real -->
+          <p class="testimonio-texto">Desde la primera reunión hasta el último momento, Liz demostró
+            una pasión y dedicación extraordinarias. Nuestra boda superó todos nuestros sueños.
+            Gracias por hacerlo tan especial.</p>
+          <div class="testimonio-estrellas" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonio-sep" aria-hidden="true"></div>
+          <p class="testimonio-nombre">Gabriela &amp; Andrés</p><!-- Reemplazar -->
+          <p class="testimonio-tipo">Boda</p><!-- Reemplazar -->
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CONTACTO
+  ========================================== -->
+  <section id="contacto" aria-label="Contacto">
+    <div class="section-container">
+      <div class="contacto-grid">
+
+        <!-- Datos -->
+        <div class="contacto-info anim">
+          <span class="eyebrow">Hablemos</span>
+          <h2 class="contacto-heading">Platiquemos de tu evento</h2>
+          <p class="contacto-desc">Cuéntame qué tienes en mente. Me encantaría escucharte
+            y juntas hacer de tu evento algo que nadie olvide.</p>
+
+          <div class="contacto-item">
+            <svg class="contacto-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span class="contacto-item-text">liz@lizbethbarron.com</span><!-- Actualizar -->
+          </div>
+
+          <div class="contacto-item">
+            <svg class="contacto-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="contacto-item-text">+52 427 219 93 74</span>
+          </div>
+
+          <div class="contacto-item">
+            <svg class="contacto-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="contacto-item-text">San Juan del Río, Querétaro, México</span>
+          </div>
+
+          <div class="redes-sociales">
+            <a href="https://www.instagram.com/liz_barron_event_planner" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/share/18HuBsFspR/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/lizbethbarron/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="contacto-form anim anim-delay-2">
+          <form id="contactForm" novalidate>
+
+            <div class="form-group" id="fg-nombre">
+              <input type="text" id="nombre" name="nombre" autocomplete="name">
+              <label class="form-label" for="nombre">Nombre completo</label>
+            </div>
+
+            <div class="form-group" id="fg-email">
+              <input type="email" id="email" name="email" autocomplete="email">
+              <label class="form-label" for="email">Correo electrónico</label>
+            </div>
+
+            <div class="form-group select-group" id="fg-tipo">
+              <select id="tipo" name="tipo">
+                <option value="" disabled selected></option>
+                <option value="social">Evento Social</option>
+                <option value="corporativo">Evento Corporativo</option>
+                <option value="deportivo">Evento Deportivo</option>
+                <option value="cultural">Evento Cultural</option>
+                <option value="otro">Otro</option>
+              </select>
+              <label class="form-label" for="tipo">Tipo de evento</label>
+            </div>
+
+            <div class="form-group" id="fg-fecha">
+              <input type="text" id="fecha" name="fecha" autocomplete="off">
+              <label class="form-label" for="fecha">Fecha tentativa</label>
+            </div>
+
+            <div class="form-group" id="fg-personas">
+              <input type="text" id="personas" name="personas" autocomplete="off">
+              <label class="form-label" for="personas">Número aproximado de personas</label>
+            </div>
+
+            <div class="form-group" id="fg-mensaje">
+              <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+              <label class="form-label" for="mensaje">Cuéntame de tu evento</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Enviar mensaje</button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  ========================================== -->
+  <footer id="footer">
+    <div class="section-container">
+      <div class="footer-logo">
+        <img src="https://res.cloudinary.com/dldccvnyj/image/upload/v1781338286/logo_2_liz_barron_-_fondo_transparente_fd7s5k.png"
+             alt="Liz Barrón Event Planner" height="48">
+      </div>
+      <p class="footer-tagline">"Planeamos cada detalle para que tú vivas cada momento."</p>
+      <ul class="footer-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/liz_barron_event_planner" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/share/18HuBsFspR/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/lizbethbarron/" target="_blank" rel="noopener noreferrer" class="red-social" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+      </div>
+      <div class="footer-sep" aria-hidden="true"></div>
+      <p class="footer-copy">© 2025 Liz Barrón Event Planner · lizbethbarron.com</p><!-- Actualizar año -->
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       WHATSAPP FLOTANTE
+  ========================================== -->
+  <a class="whatsapp-btn" href="https://wa.me/524272199374" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Escríbenos</span>
+  </a>
+
+  <!-- Form success overlay -->
+  <div class="form-success" id="formSuccess" role="dialog" aria-modal="true" aria-label="Mensaje enviado">
+    <div class="form-success-box">
+      <div class="form-success-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h3>¡Gracias!</h3>
+      <p>Te contactaré muy pronto.<br>Estoy emocionada de conocer tu evento.</p>
+      <button class="form-success-close" id="closeSuccess">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+    // ── Navbar scroll ──────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ── Hamburger / mobile menu ────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMenu(); }
+    });
+
+    mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Portfolio filters ──────────────────────────────────────────
+    const pills = document.querySelectorAll('.pill');
+    const masonryItems = document.querySelectorAll('.masonry-item');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const filter = pill.dataset.filter;
+        masonryItems.forEach(item => {
+          const show = filter === 'todos' || item.dataset.category === filter;
+          item.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    // ── Float labels ───────────────────────────────────────────────
+    document.querySelectorAll('.form-group input, .form-group textarea').forEach(el => {
+      const group = el.closest('.form-group');
+      el.addEventListener('focus', () => group.classList.add('focused'));
+      el.addEventListener('blur', () => {
+        group.classList.remove('focused');
+        group.classList.toggle('filled', el.value.trim() !== '');
+      });
+      // Init in case of browser autofill
+      if (el.value.trim() !== '') group.classList.add('filled');
+    });
+
+    // ── Form submit ────────────────────────────────────────────────
+    const form = document.getElementById('contactForm');
+    const successOverlay = document.getElementById('formSuccess');
+    const closeSuccess = document.getElementById('closeSuccess');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      successOverlay.classList.add('show');
+      form.reset();
+      document.querySelectorAll('.form-group').forEach(g => {
+        g.classList.remove('filled', 'focused');
+      });
+    });
+
+    closeSuccess.addEventListener('click', () => successOverlay.classList.remove('show'));
+    successOverlay.addEventListener('click', e => {
+      if (e.target === successOverlay) successOverlay.classList.remove('show');
+    });
+
+    // ── Intersection Observer — reveal animations ──────────────────
+    const animEls = document.querySelectorAll('.anim');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
