@@ -250,29 +250,41 @@
     #inicio {
       min-height: 100vh;
       background-color: var(--blanco);
-      background-image: radial-gradient(ellipse at 65% 40%, #FDE8E2 0%, #FFFFFF 65%);
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
       position: relative;
       overflow: hidden;
     }
 
-    #inicio::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23C99884' fill-opacity='0.07'/%3E%3C/svg%3E");
-      background-size: 60px 60px;
-      pointer-events: none;
+    .hero-split {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      min-height: 100vh;
+      flex: 1;
     }
 
     .hero-content {
-      text-align: center;
-      max-width: 640px;
-      padding: 130px 24px 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 60px 100px 80px;
+      background: linear-gradient(135deg, #FDF0EC 0%, #FFFFFF 60%);
+      text-align: left;
       position: relative;
       z-index: 1;
+    }
+
+    .hero-foto-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-foto {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
     }
 
     .hero-eyebrow {
@@ -298,7 +310,7 @@
       width: 60px;
       height: 1px;
       background-color: var(--rose-gold);
-      margin: 28px auto;
+      margin: 28px 0;
     }
 
     .hero-subtitle {
@@ -314,7 +326,7 @@
     .hero-buttons {
       display: flex;
       gap: 16px;
-      justify-content: center;
+      justify-content: flex-start;
       margin-top: 40px;
       flex-wrap: wrap;
     }
@@ -1201,6 +1213,12 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
 
+      .hero-split { grid-template-columns: 1fr; }
+      .hero-foto-wrap { height: 55vh; order: -1; }
+      .hero-content { padding: 60px 40px 80px; text-align: center; }
+      .hero-divider { margin: 28px auto; }
+      .hero-buttons { justify-content: center; }
+
       .servicios-header { grid-template-columns: 1fr; gap: 20px; }
       .servicios-header-right { padding-top: 0; }
       .servicios-grid { grid-template-columns: 1fr; }
@@ -1256,6 +1274,8 @@
         flex-shrink: 0;
       }
 
+      .hero-foto-wrap { height: 45vh; }
+      .hero-content { padding: 48px 24px 72px; }
       .hero-buttons { flex-direction: column; align-items: center; }
     }
   </style>
@@ -1297,22 +1317,31 @@
        HERO
   ========================================== -->
   <section id="inicio" aria-label="Hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Event Planner · San Juan del Río, Querétaro</p>
-      <h1 class="hero-headline">
-        Planeamos cada detalle<br>
-        para que tú vivas<br>
-        cada momento.
-      </h1>
-      <div class="hero-divider" aria-hidden="true"></div>
-      <p class="hero-subtitle">
-        Diseño, coordinación y producción de eventos sociales,
-        deportivos, culturales y corporativos.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn-primary">Cotiza tu evento</a>
-        <a href="#portafolio" class="btn-secondary">Ver portafolio</a>
+    <div class="hero-split">
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Event Planner · San Juan del Río, Querétaro</p>
+        <h1 class="hero-headline">
+          Planeamos cada detalle<br>
+          para que tú vivas<br>
+          cada momento.
+        </h1>
+        <div class="hero-divider" aria-hidden="true"></div>
+        <p class="hero-subtitle">
+          Diseño, coordinación y producción de eventos sociales,
+          deportivos, culturales y corporativos.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn-primary">Cotiza tu evento</a>
+          <a href="#portafolio" class="btn-secondary">Ver portafolio</a>
+        </div>
       </div>
+
+      <div class="hero-foto-wrap">
+        <img src="https://res.cloudinary.com/dldccvnyj/image/upload/v1781340670/WhatsApp_Image_2026-06-13_at_02.48.45_gwvomh.jpg"
+             alt="Liz Barrón — Event Planner" class="hero-foto">
+      </div>
+
     </div>
     <div class="scroll-indicator" aria-hidden="true">
       <span>Scroll</span>
