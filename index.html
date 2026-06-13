@@ -141,7 +141,7 @@
       font-weight: 500;
       font-size: 13px;
       letter-spacing: 0.08em;
-      color: var(--marfil-claro);
+      color: var(--cafe-rosado);
       position: relative;
       cursor: pointer;
       transition: color var(--transition);
@@ -197,22 +197,22 @@
       display: block;
       width: 24px;
       height: 1.5px;
-      background-color: var(--marfil-claro);
+      background-color: var(--cafe-rosado);
       transition: transform 0.4s ease, opacity 0.4s ease, background-color var(--transition);
     }
 
-    #navbar.scrolled .hamburger span { background-color: var(--oscuro); }
+    #navbar.scrolled .hamburger span { background-color: var(--cafe-rosado); }
 
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background-color: var(--marfil-claro) !important; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background-color: var(--rose-gold) !important; }
     .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background-color: var(--marfil-claro) !important; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background-color: var(--rose-gold) !important; }
 
     /* Mobile overlay */
     .mobile-menu {
       display: none;
       position: fixed;
       inset: 0;
-      background-color: var(--oscuro);
+      background-color: var(--blanco);
       z-index: 200;
       flex-direction: column;
       align-items: center;
@@ -232,7 +232,7 @@
     .mobile-menu a {
       font-family: 'Playfair Display', serif;
       font-size: 30px;
-      color: var(--marfil-claro);
+      color: var(--oscuro);
       transition: color var(--transition);
     }
 
@@ -249,7 +249,8 @@
     ========================================== */
     #inicio {
       min-height: 100vh;
-      background-color: var(--oscuro);
+      background-color: var(--blanco);
+      background-image: radial-gradient(ellipse at 65% 40%, #FDE8E2 0%, #FFFFFF 65%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -261,7 +262,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='white' fill-opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23C99884' fill-opacity='0.07'/%3E%3C/svg%3E");
       background-size: 60px 60px;
       pointer-events: none;
     }
@@ -288,7 +289,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: clamp(34px, 5.5vw, 56px);
-      color: var(--marfil-claro);
+      color: var(--oscuro);
       line-height: 1.2;
       letter-spacing: -0.02em;
     }
@@ -304,7 +305,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       font-size: 16px;
-      color: rgba(250,248,247,0.65);
+      color: var(--cafe-rosado);
       max-width: 480px;
       margin: 0 auto;
       line-height: 1.75;
@@ -338,7 +339,7 @@
 
     .btn-secondary {
       background-color: transparent;
-      color: var(--marfil-claro);
+      color: var(--oscuro);
       padding: 14px 36px;
       border-radius: 2px;
       font-family: 'Montserrat', sans-serif;
@@ -347,12 +348,12 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
-      border: 1px solid rgba(250,248,247,0.4);
-      transition: border-color var(--transition);
+      border: 1px solid rgba(201,152,132,0.5);
+      transition: border-color var(--transition), color var(--transition);
       display: inline-block;
     }
 
-    .btn-secondary:hover { border-color: rgba(250,248,247,1); }
+    .btn-secondary:hover { border-color: var(--rose-gold); color: var(--rose-gold); }
 
     .scroll-indicator {
       position: absolute;
@@ -725,7 +726,7 @@
        TESTIMONIOS
     ========================================== */
     #testimonios {
-      background-color: var(--oscuro);
+      background-color: var(--rosa-marfil);
       padding: 110px 0;
     }
 
@@ -738,7 +739,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 48px;
-      color: var(--marfil-claro);
+      color: var(--oscuro);
       letter-spacing: -0.02em;
       margin-top: 14px;
     }
@@ -750,8 +751,8 @@
     }
 
     .testimonio-card {
-      background-color: rgba(250,248,247,0.05);
-      border: 0.5px solid rgba(201,152,132,0.3);
+      background-color: var(--blanco);
+      border: 0.5px solid rgba(201,152,132,0.35);
       border-radius: 2px;
       padding: 40px;
     }
@@ -770,7 +771,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       font-size: 15px;
-      color: var(--marfil-claro);
+      color: var(--cafe-rosado);
       line-height: 1.9;
       font-style: italic;
       margin-bottom: 28px;
@@ -794,7 +795,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 500;
       font-size: 14px;
-      color: var(--marfil-claro);
+      color: var(--oscuro);
       margin-bottom: 4px;
     }
 
@@ -1058,7 +1059,8 @@
        FOOTER
     ========================================== */
     #footer {
-      background-color: var(--oscuro);
+      background-color: var(--blanco);
+      border-top: 0.5px solid rgba(201,152,132,0.25);
       padding: 64px 0 40px;
       text-align: center;
     }
@@ -1092,12 +1094,12 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       font-size: 13px;
-      color: rgba(250,248,247,0.5);
+      color: rgba(154,115,103,0.65);
       cursor: pointer;
       transition: color var(--transition);
     }
 
-    .footer-links a:hover { color: var(--marfil-claro); }
+    .footer-links a:hover { color: var(--oscuro); }
 
     .footer-socials {
       display: flex;
@@ -1108,8 +1110,8 @@
 
     /* Footer red-social inherits styles from contacto */
     .footer-socials .red-social {
-      border-color: rgba(201,152,132,0.35);
-      color: rgba(201,152,132,0.7);
+      border-color: var(--gris-taupe);
+      color: var(--cafe-rosado);
     }
 
     .footer-socials .red-social:hover {
@@ -1129,7 +1131,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
       font-size: 12px;
-      color: rgba(250,248,247,0.4);
+      color: rgba(44,44,44,0.4);
     }
 
     /* ==========================================
